@@ -18,7 +18,7 @@ body {
   height: 100%;
   width: 100%;
   background: var(--primary-bg-color);
-  scroll-behavior: ;
+  scroll-behavior: smooth ;
 }
 
 figcaption {
