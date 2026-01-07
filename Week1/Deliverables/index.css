@@ -121,6 +121,13 @@ nav > h1 {
   align-items: start;
 }
 
+/* Tablets */
+@media only screen and (min-width: 728px) {
+  .hero-image img{
+    padding-left: 6rem;
+  }
+}
+
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   nav {
@@ -162,12 +169,6 @@ nav > h1 {
   }
 }
 
-/* Very Large devices */
-@media only screen and (min-width: 728px) {
-  .hero-image img{
-    padding-left: 6rem;
-  }
-}
 
 /* Very Large devices */
 @media only screen and (min-width: 1600px) {
