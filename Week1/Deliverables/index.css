@@ -193,10 +193,9 @@ nav > h1 {
   align-items: center;
 }
 
-.book-rev{
+.book-rev {
   flex-direction: column;
 }
-
 
 .book .book-text {
   height: max-content;
@@ -314,6 +313,10 @@ form button {
 }
 .desktop-socials {
   display: none;
+}
+
+.desktop-socials > div {
+  cursor: pointer;
 }
 
 /* Tablets */
@@ -483,21 +486,27 @@ form button {
     border-radius: 8px;
   }
 
+  footer .desktop-socials > div:hover{
+    background: var(--primary-bg-color);
+    color: var(--primary-text);
+  }
+
   footer .form {
     width: 50%;
     height: 100%;
   }
 
-  footer form{
+  footer form {
     display: flex;
     height: 100%;
     justify-content: space-evenly;
   }
 
-  footer button{
+  footer button {
     padding: 8px 0px;
     border-radius: 8px;
     font-size: larger;
+    cursor: pointer;
   }
 
   footer .mobile-socials {
