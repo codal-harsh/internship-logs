@@ -193,6 +193,11 @@ nav > h1 {
   align-items: center;
 }
 
+.book-rev{
+  flex-direction: column;
+}
+
+
 .book .book-text {
   height: max-content;
   display: flex;
@@ -459,6 +464,7 @@ form button {
     justify-content: space-between;
     width: 100%;
     padding: 0px 4rem;
+    height: max-content;
   }
 
   footer .desktop-socials {
@@ -466,7 +472,7 @@ form button {
     width: 50vw;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    padding: 8px ;
+    padding: 8px;
     gap: 8px;
   }
 
@@ -479,6 +485,19 @@ form button {
 
   footer .form {
     width: 50%;
+    height: 100%;
+  }
+
+  footer form{
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+  }
+
+  footer button{
+    padding: 8px 0px;
+    border-radius: 8px;
+    font-size: larger;
   }
 
   footer .mobile-socials {
@@ -518,25 +537,12 @@ form button {
   }
 
   footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 4px 8rem;
+    height: 40vh;
+    padding: 8px 8rem;
   }
-
-  footer .desktop-socials {
-    display: grid;
-    width: 50vw;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 8px;
-    padding-right: 0px;
-  }
-
   footer .desktop-socials div {
     border: 1px solid var(--primary-bg-color);
-    font-size: 4rem;
-    padding: 2rem;
+    font-size: 3rem;
   }
 
   footer .form {
