@@ -1,0 +1,506 @@
+$primary-bg: #f0e7d5;
+$primary-text: #212842;
+$fonts: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+$desktop-width : 1024px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $fonts;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: $primary-bg;
+  scroll-behavior: smooth;
+
+  figcaption {
+    visibility: hidden;
+  }
+
+  .bg {
+    background: $primary-bg;
+    color: $primary-text;
+  }
+
+  .rev-bg {
+    background-color: $primary-text;
+    color: $primary-bg;
+  }
+
+  .section {
+    padding: 0px 2rem;
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    .section {
+      padding: 0px 8rem;
+    }
+  }
+}
+
+nav {
+  width: 100%;
+  height: 8%;
+  position: fixed;
+  background: $primary-bg;
+  padding: 0 2rem;
+  color: $primary-text;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid $primary-text;
+
+  .nav-menu {
+    display: none;
+    list-style: none;
+    gap: 2rem;
+
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+
+    background: $primary-bg;
+    padding: 2rem;
+
+    font-size: larger;
+    font-weight: 500;
+
+    li {
+      cursor: pointer;
+      padding: 0 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: large;
+      transition: transform 0.2s linear;
+
+      &:hover {
+        transform: scale(1.05);
+        text-decoration: overline;
+      }
+    }
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    font-size: larger;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  h1 {
+    display: none;
+    font-weight: 600;
+    color: $primary-text;
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    padding: 0 4rem;
+
+    h1 {
+      display: block;
+    }
+
+    h2 {
+      display: none;
+    }
+
+    button {
+      display: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: row;
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 0;
+    }
+  }
+
+  @media only screen and (min-width: 1440px) {
+    padding: 0 8rem;
+  }
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, $primary-bg 50%, $primary-text 50%);
+  position: relative;
+
+  figure {
+    display: flex;
+    align-items: center;
+    margin-top: 22rem;
+    padding-left: 2rem;
+
+    img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .floating-quotes {
+    position: absolute;
+    font-size: 4rem;
+    width: 25%;
+    margin: 0px 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    display: none;
+  }
+
+  .cta {
+    height: 8%;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    background: transparent;
+    gap: 8px;
+    padding: 0px 2rem;
+    justify-content: space-between;
+
+    button {
+      width: 100%;
+      height: 100%;
+      padding: 6px 0px;
+      background: $primary-bg;
+      color: $primary-text;
+      border-radius: 25px;
+      border: none;
+      font-weight: bolder;
+      font-size: medium;
+      box-shadow: 2px 2px $primary-text;
+    }
+
+    .rev {
+      background: $primary-text;
+      color: $primary-bg;
+    }
+
+    .cta-btn-desktop {
+      width: max-content;
+      padding: 0.5rem 1rem;
+      border: none;
+    }
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    .cta {
+      display: none;
+    }
+    figure {
+      img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+        padding-left: 8rem;
+        display: block;
+      }
+    }
+    .floating-quotes {
+      display: block;
+      margin: 0px 8rem;
+
+      button {
+        background: $primary-text;
+        color: $primary-bg;
+        border-radius: 25px;
+        font-size: large;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 8px 1rem;
+        border: none;
+      }
+    }
+    #left {
+      left: 0;
+      color: $primary-text;
+    }
+    #right {
+      right: 0;
+      text-align: end;
+      color: $primary-bg;
+      align-items: end;
+
+      button {
+        background: $primary-bg;
+        color: $primary-text;
+      }
+    }
+  }
+}
+
+.banner {
+  height: max-content;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: white;
+  background: $primary-text;
+  color: $primary-bg;
+  text-transform: uppercase;
+  font-family: $fonts;
+  font-weight: 600;
+  font-size: 2rem;
+  border-top: 1px solid $primary-bg;
+  border-bottom: 1px solid $primary-bg;
+
+  @media only screen and (min-width: $desktop-width) {
+    font-size: 6em;
+  }
+}
+
+.book {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0px;
+
+  .book-text {
+    height: max-content;
+    display: flex;
+    text-align: justify;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: max-content;
+    }
+  }
+
+  .book-image {
+    display: flex;
+    height: 60%;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 90%;
+      border-radius: 24px;
+    }
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .book-text {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      text-align: start;
+
+      h2 {
+        font-size: 4rem;
+      }
+
+      p {
+        padding-left: 4px;
+      }
+
+      & > div {
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding-bottom: 2rem;
+      }
+    }
+
+    .book-image {
+      width: 30%;
+      height: 100%;
+      justify-content: end;
+
+      img {
+        width: 100%;
+        height: 70%;
+        border-radius: 24px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.book-rev {
+  flex-direction: column;
+
+  @media only screen and (min-width: $desktop-width) {
+    flex-direction: row;
+  }
+}
+
+.footer-banner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  background: $primary-bg;
+  color: $primary-text;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bolder;
+
+  @media only screen and (min-width: $desktop-width) {
+    font-size: 6em;
+  }
+}
+
+footer {
+  background: $primary-text;
+  color: $primary-bg;
+  height: 50vh;
+  position: relative;
+
+  .desktop-socials {
+    display: none;
+  }
+
+  .mobile-socials {
+    position: absolute;
+    width: 100%;
+    padding: 4px 2rem;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    color: $primary-bg;
+
+    & > div {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  .form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  form {
+    width: 100%;
+    padding: 4px 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+
+    input {
+      background: #191f34;
+      color: white;
+      border: none;
+      border-bottom: 1px solid var(--primary-bg-color);
+      padding: 4px;
+      font-size: large;
+
+      &:focus {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid var(--primary-bg-color);
+      }
+    }
+
+    textarea {
+      background: #191f34;
+      color: white;
+      border: none;
+      border-bottom: 1px solid var(--primary-bg-color);
+      padding: 4px;
+      font-size: large;
+      &:focus {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid $primary-bg;
+      }
+    }
+
+    button {
+      background: $primary-bg;
+      margin-top: 12px;
+      border: none;
+      padding: 4px 0px;
+      font-weight: bold;
+    }
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px 4rem;
+    height: max-content;
+
+    .mobile-socials {
+      display: none;
+    }
+    .desktop-socials {
+      display: grid;
+      width: 50vw;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      padding: 8px;
+      gap: 8px;
+
+      & > div {
+        border: 1px solid $primary-bg;
+        font-size: 2rem;
+        padding: 1rem;
+        border-radius: 8px;
+
+        &:hover {
+          background: $primary-bg;
+          color: $primary-text;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .form {
+      width: 50%;
+      height: 100%;
+    }
+
+    form {
+      display: flex;
+      height: 100%;
+      justify-content: space-evenly;
+      padding: 12px 4rem;
+      gap: 4px;
+    }
+  }
+}
