@@ -16,12 +16,30 @@
       <h2>HS</h2>
 
       <ul id="nav-menu" class="nav-menu">
-        <li>About</li>
-        <li>Books</li>
-        <li>Message</li>
-        <li>Blog</li>
-        <li>Course</li>
-        <li>Media</li>
+        <li>
+          About
+          <div class="hover-section"></div>
+        </li>
+        <li>
+          Books
+          <div class="hover-section"></div>
+        </li>
+        <li>
+          Message
+          <div class="hover-section"></div>
+        </li>
+        <li>
+          Blog
+          <div class="hover-section right"></div>
+        </li>
+        <li>
+          Course
+          <div class="hover-section right"></div>
+        </li>
+        <li>
+          Media
+          <div class="hover-section right"></div>
+        </li>
       </ul>
       <button id="toggle-nav"><i class="ri-menu-line"></i></button>
     </nav>
@@ -166,11 +184,11 @@
       const menu = document.getElementById("nav-menu");
       const btn = document.getElementById("toggle-nav");
       btn.addEventListener("click", () => {
-        if(!toggle){
-          menu.classList.add('active');
+        if (!toggle) {
+          menu.classList.add("active");
           toggle = !toggle;
-        }else{
-          menu.classList.remove('active');
+        } else {
+          menu.classList.remove("active");
           toggle = !toggle;
         }
       });
