@@ -1,7 +1,7 @@
 $primary-bg: #f0e7d5;
 $primary-text: #212842;
 $fonts: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-$desktop-width : 1024px;
+$desktop-width: 1024px;
 
 * {
   margin: 0;
@@ -58,23 +58,23 @@ nav {
   border-bottom: 1px solid $primary-text;
 
   .nav-menu {
-    display: none;
+    visibility: hidden;
+    display: flex;
     list-style: none;
     gap: 2rem;
-
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 56px;
     right: 0;
     width: 100vw;
-    height: calc(100vh - 60px);
-
+    height: calc(100vh - 56px);
     background: $primary-bg;
     padding: 2rem;
-
     font-size: larger;
     font-weight: 500;
-
+    transform: translateX(100%);
+    transition: transform 0.35s ease-in-out, opacity 0.3s ease-in-out,
+      visibility 0s linear 0.35s;
     li {
       cursor: pointer;
       padding: 0 4px;
@@ -82,6 +82,7 @@ nav {
       font-weight: 600;
       font-size: large;
       transition: transform 0.2s linear;
+      position: relative;
 
       &:hover {
         transform: scale(1.05);
@@ -92,6 +93,9 @@ nav {
 
   .nav-menu.active {
     display: flex;
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform 0.35s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   button {
@@ -125,11 +129,40 @@ nav {
 
     .nav-menu {
       display: flex;
+      visibility: visible;
+      transform: translateX(0);
       flex-direction: row;
       position: static;
       width: auto;
       height: auto;
       padding: 0;
+    }
+
+    .hover-section {
+      position: absolute;
+      visibility: hidden;
+      width: 400px;
+      height: 300px;
+      top: 30px;
+      left: -20px;
+      background: $primary-bg;
+      border: 1px solid;
+    }
+
+    .right {
+      right: 30px;
+      left: auto;
+    }
+
+    li {
+      &:hover {
+        .hover-section {
+          visibility: visible;
+        }
+        .right {
+          visibility: visible;
+        }
+      }
     }
   }
 
@@ -227,28 +260,41 @@ nav {
       }
     }
     .floating-quotes {
-      display: block;
+      display: flex;
+      gap: 4px;
       margin: 0px 8rem;
 
       button {
         background: $primary-text;
         color: $primary-bg;
         border-radius: 25px;
-        font-size: large;
+        font-size: 1.2rem;
         font-weight: bold;
         cursor: pointer;
-        padding: 8px 1rem;
+        padding: 12px 1rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
         border: none;
+        width: max-content;
+        &:hover {
+          i {
+            transition: all 300ms;
+            transform: rotate(45deg);
+          }
+        }
       }
     }
+
     #left {
       left: 0;
       color: $primary-text;
     }
     #right {
       right: 0;
-      text-align: end;
       color: $primary-bg;
+      display: flex;
+      text-align: end;
       align-items: end;
 
       button {
@@ -260,9 +306,11 @@ nav {
 }
 
 .banner {
-  height: max-content;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 30vh;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   color: white;
   background: $primary-text;
   color: $primary-bg;
@@ -275,6 +323,8 @@ nav {
 
   @media only screen and (min-width: $desktop-width) {
     font-size: 6em;
+    height: min-content;
+    height: 50vh;
   }
 }
 
@@ -324,7 +374,7 @@ nav {
       text-align: start;
 
       h2 {
-        font-size: 4rem;
+        font-size: 6rem;
       }
 
       p {
@@ -343,7 +393,7 @@ nav {
     .book-image {
       width: 30%;
       height: 100%;
-      justify-content: end;
+      padding: 32px 0px;
 
       img {
         width: 100%;
@@ -383,7 +433,7 @@ nav {
 footer {
   background: $primary-text;
   color: $primary-bg;
-  height: 50vh;
+  height: 50%;
   position: relative;
 
   .desktop-socials {
@@ -402,6 +452,15 @@ footer {
     & > div {
       display: flex;
       gap: 8px;
+    }
+
+    &:first-child {
+      // background: #000;
+      color: #fff;
+    }
+    &:last-child {
+      // background: #000;
+      color: red;
     }
   }
 
@@ -422,24 +481,28 @@ footer {
 
     input {
       background: #191f34;
-      color: white;
+      color: $primary-bg;
       border: none;
-      border-bottom: 1px solid var(--primary-bg-color);
-      padding: 4px;
+      border-bottom: 1px solid $primary-bg;
+      padding: 8px 0px;
+      background: transparent;
+
       font-size: large;
 
       &:focus {
         border: none;
         outline: none;
-        border-bottom: 1px solid var(--primary-bg-color);
+        border-bottom: 1px solid $primary-bg;
       }
     }
 
     textarea {
-      background: #191f34;
-      color: white;
+      border-bottom: 1px solid $primary-bg;
+      padding: 8px;
+      color: $primary-bg;
+      background: transparent;
       border: none;
-      border-bottom: 1px solid var(--primary-bg-color);
+      border-bottom: 1px solid $primary-bg;
       padding: 4px;
       font-size: large;
       &:focus {
@@ -463,8 +526,7 @@ footer {
     justify-content: space-between;
     width: 100%;
     padding: 4px 4rem;
-    height: max-content;
-
+    height: 40vh;
     .mobile-socials {
       display: none;
     }
@@ -478,14 +540,26 @@ footer {
 
       & > div {
         border: 1px solid $primary-bg;
-        font-size: 2rem;
+        font-size: 3rem;
         padding: 1rem;
         border-radius: 8px;
+        position: relative;
 
         &:hover {
           background: $primary-bg;
           color: $primary-text;
           cursor: pointer;
+
+          i {
+            transform: rotate(45deg);
+            transition: all 300ms;
+          }
+        }
+
+        i {
+          position: absolute;
+          right: 0;
+          padding-right: 1rem;
         }
       }
     }
@@ -501,6 +575,14 @@ footer {
       justify-content: space-evenly;
       padding: 12px 4rem;
       gap: 4px;
+
+      button {
+        padding: 8px 0px;
+        font-size: larger;
+        font-weight: bold;
+        color: $primary-text;
+        border-radius: 24px;
+      }
     }
   }
 }
