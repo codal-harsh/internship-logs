@@ -1,6 +1,7 @@
 $primary-bg: #f0e7d5;
 $primary-text: #212842;
 $fonts: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+$desktop-width : 1024px;
 
 * {
   margin: 0;
@@ -34,7 +35,7 @@ body {
     padding: 0px 2rem;
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     .section {
       padding: 0px 8rem;
     }
@@ -107,7 +108,7 @@ nav {
     color: $primary-text;
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     padding: 0 4rem;
 
     h1 {
@@ -212,7 +213,7 @@ nav {
     }
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     .cta {
       display: none;
     }
@@ -272,7 +273,7 @@ nav {
   border-top: 1px solid $primary-bg;
   border-bottom: 1px solid $primary-bg;
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     font-size: 6em;
   }
 }
@@ -311,7 +312,7 @@ nav {
     }
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     flex-direction: row;
     justify-content: space-between;
 
@@ -357,7 +358,7 @@ nav {
 .book-rev {
   flex-direction: column;
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     flex-direction: row;
   }
 }
@@ -374,7 +375,7 @@ nav {
   text-align: center;
   font-weight: bolder;
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     font-size: 6em;
   }
 }
@@ -457,7 +458,7 @@ footer {
     }
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: $desktop-width) {
     display: flex;
     justify-content: space-between;
     width: 100%;
