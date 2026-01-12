@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Haemin Sunim Website</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <h1>Haemin Sunim</h1>
+      <h2>HS</h2>
+
+      <ul id="nav-menu" class="nav-menu">
+        <li>About</li>
+        <li>Books</li>
+        <li>Message</li>
+        <li>Blog</li>
+        <li>Course</li>
+        <li>Media</li>
+      </ul>
+      <button id="toggle-nav"><i class="ri-menu-line"></i></button>
+    </nav>
+
+    <section class="hero">
+      <!-- HERO IMAGE -->
+      <figure class="hero-image">
+        <img src="../public/haimin-photo.png" alt="Haimin Sunim's photo" />
+        <figcaption>Haimin Sunim's photo</figcaption>
+      </figure>
+
+      <!-- ABS DIVS -->
+      <div class="floating-quotes" id="left">
+        <p>Zen Meditation Teacher</p>
+        <button class="cta-btn-desktop">
+          Explore Courses <i class="ri-arrow-right-up-line"></i>
+        </button>
+      </div>
+
+      <div class="floating-quotes" id="right">
+        <p>
+          Best <br />
+          Selling Author
+        </p>
+
+        <button class="cta-btn-desktop">
+          Explore Books <i class="ri-arrow-right-up-line"></i>
+        </button>
+      </div>
+
+      <div class="cta">
+        <button class="cta-btn rev">
+          Explore Courses <i class="ri-arrow-right-up-line"></i>
+        </button>
+        <button class="cta-btn">
+          Explore Books <i class="ri-arrow-right-up-line"></i>
+        </button>
+      </div>
+    </section>
+
+    <section class="section banner">
+      <p class="banner-text">
+        Being right is not important, <br />
+        Being happy together is.
+      </p>
+    </section>
+
+    <!-- Books -->
+    <section class="section bg">
+      <div class="book">
+        <div class="book-text">
+          <div class="">
+            <h2>When Things Don't Go Your Way</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+              corporis architecto, incidunt inventore deserunt sapiente rem
+              iusto nobis quam rerum perferendis maiores perspiciatis voluptate
+              quod laudantium iste eum quas praesentium blanditiiprehenderit
+              quidem esse quaerat assumenda pariatur doloribus fugiat. Modi
+              ipsam facilis optio expedita! Lorem ipsum dolor sit amet
+              consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+        <div class="book-image">
+          <img
+            src="./public/book3.jpg"
+            alt="First Book: Love For Imperfect Things"
+          />
+        </div>
+      </div>
+    </section>
+
+    <article class="section rev-bg">
+      <div class="book book-rev">
+        <div class="book-image">
+          <img
+            src="./public/book1.jpg"
+            alt="First Book: Love For Imperfect Things"
+          />
+        </div>
+
+        <div class="book-text">
+          <div class="">
+            <h2>Love For Imperfect Things</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+              corporis architecto, incidunt inventore deserunt sapiente rem
+              iusto nobis quam rerum perferendis maiores perspiciatis voluptate
+              quod laudantium iste eum quas praesentium blanditiiprehenderit
+              quidem esse quaerat assumenda pariatur doloribus fugiat. Modi
+              ipsam facilis optio expedita! Lorem ipsum dolor sit amet
+              consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section class="section footer-banner">
+      <p>WISDOM NEVER ENDS</p>
+      <p>IT CARRY FORWARDS</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="mobile-socials">
+        <p>&copy; Haemin Sunim</p>
+        <div>
+          <i class="ri-instagram-fill"></i>
+          <i class="ri-instagram-fill"></i>
+          <i class="ri-instagram-fill"></i>
+        </div>
+      </div>
+
+      <div class="desktop-socials">
+        <div>Instagram <i class="ri-arrow-right-up-line"></i></div>
+        <div>Twitter <i class="ri-arrow-right-up-line"></i></div>
+        <div>Linkedin <i class="ri-arrow-right-up-line"></i></div>
+        <div>Mail <i class="ri-arrow-right-up-line"></i></div>
+      </div>
+      <div class="form">
+        <form action="/">
+          <input type="email" placeholder="Email" />
+          <input type="text" placeholder="Name" />
+          <input type="text" placeholder="Title" />
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="1"
+            placeholder="Description"
+          ></textarea>
+
+          <button>Submit</button>
+        </form>
+      </div>
+    </footer>
+
+    <script>
+      let toggle = false;
+      const menu = document.getElementById("nav-menu");
+      const btn = document.getElementById("toggle-nav");
+      btn.addEventListener("click", () => {
+        if(!toggle){
+          menu.classList.add('active');
+          toggle = !toggle;
+        }else{
+          menu.classList.remove('active');
+          toggle = !toggle;
+        }
+      });
+    </script>
+  </body>
+</html>
