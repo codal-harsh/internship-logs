@@ -54,7 +54,7 @@
       <!-- ABS DIVS -->
       <div class="floating-quotes" id="left">
         <p>Zen Meditation Teacher</p>
-        <button class="cta-btn-desktop">
+        <button class="cta-btn-desktop" id="open-grid">
           Explore Courses <i class="ri-arrow-right-up-line"></i>
         </button>
       </div>
@@ -71,7 +71,7 @@
       </div>
 
       <div class="cta">
-        <button class="cta-btn rev">
+        <button class="cta-btn rev" id="open-grid">
           Explore Courses <i class="ri-arrow-right-up-line"></i>
         </button>
         <button class="cta-btn">
@@ -191,6 +191,10 @@
           menu.classList.remove("active");
           toggle = !toggle;
         }
+      });
+
+      document.getElementById("open-grid").addEventListener("click", () => {
+        window.open('./grid.html','_blank')
       });
     </script>
   </body>
