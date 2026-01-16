@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap");
+
+$primary: #e3f9f9;
+$primary-subtle: #a1d6e2;
+$secondary: #4b8da8;
+$secondary-dark: #1a3e5d;
+$danger: black;
+$success: #e3f9f9;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "secondary-dark": $secondary-dark,
+  "danger": $danger,
+  "success": $success,
+);
+
+$primary-bg-subtle: #a1d6e2;
+$font-family-sans-serif: "Lato", serif;
+
+.h-10 {
+  height: 10%;
+}
+.h-90 {
+  height: 90%;
+}
+.text-justify {
+  text-align: justify;
+}
+
+input:checked {
+  background-color: #2196f3;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+/* 2️⃣ Import Bootstrap */
+@import "../node_modules/bootstrap/scss/bootstrap";
