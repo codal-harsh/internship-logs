@@ -11,7 +11,8 @@ const createChildListElement = (todo) => {
     "w-100",
     "d-flex",
     "align-items-center",
-    "gap-3"
+    "gap-3",
+    "position-relative"
   );
   li.id = `${todo.id}`;
   const input = document.createElement("input");
@@ -19,8 +20,38 @@ const createChildListElement = (todo) => {
   input.classList.add("form-check-input", "bg-secondary", "p-3");
   li.appendChild(input);
   const text = document.createElement("span");
+  text.classList.add("border-0");
   text.innerHTML = todo.text;
   li.appendChild(text);
+
+  const actions = document.createElement("div");
+  actions.classList.add(
+    "position-absolute",
+    "end-0",
+    "p-3",
+    "d-flex",
+    "gap-3",
+    "fs-4"
+  );
+  const editbtn = document.createElement("button");
+  const editicon = document.createElement("i");
+  editbtn.classList.add("bg-transparent", "border-0", "todo-edit-btn");
+  editicon.classList.add("ri-edit-2-line");
+  editbtn.appendChild(editicon);
+  editbtn.id = `edit-btn-${todo.id}`;
+  editicon.dataset.id = todo.id;
+
+  const deletebtn = document.createElement("button");
+  const deleteicon = document.createElement("i");
+  deletebtn.classList.add("bg-transparent", "border-0", "todo-delete-btn");
+  deleteicon.classList.add("ri-delete-bin-4-line");
+  deletebtn.appendChild(deleteicon);
+  deletebtn.id = `delete-btn-${todo.id}`;
+
+  actions.appendChild(editbtn);
+  actions.appendChild(deletebtn);
+
+  li.appendChild(actions);
   return li;
 };
 
