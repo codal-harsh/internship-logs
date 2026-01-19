@@ -39,7 +39,7 @@ export const addTodo = (e) => {
   todos.push(todo);
   changeStorage(todos);
   updateTodoOnpage(todo);
-  document.getElementById("todo_title").value = ""
+  document.getElementById("todo_title").value = "";
 };
 
 export const getTodo = () => {
@@ -79,7 +79,7 @@ export const deleteSingleTodo = (id) => {
   loadTodoOnPage();
 };
 
-export const editTodo = (e) =>{
+export const editTodo = (e) => {
   const editBtn = e.target.closest(".todo-edit-btn");
   if (!editBtn) return;
   const li = editBtn.closest("li");
@@ -107,4 +107,4 @@ export const editTodo = (e) =>{
     clearTodoOnPage();
     loadTodoOnPage();
   });
-}
+};
