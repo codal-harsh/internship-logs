@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -29,16 +29,85 @@
               id="todo-list"
               class="list-unstyled mt-3 d-flex flex-column gap-2 overflow-auto pb-5 h-100"
             ></ul>
+            
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <form id="todo-add-form">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Add Todo
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input
+                          type="text"
+                          name="todo_title"
+                          id="todo_title"
+                          class="form-control"
+                          placeholder="Enter title"
+                          required
+                        />
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea
+                          name="todo_description"
+                          id="todo_description"
+                          class="form-control"
+                          rows="4"
+                          placeholder="Enter description"
+                        ></textarea>
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        class="btn btn-secondary text-white"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
 
             <div class="position-absolute m-3 end-0 top-0">
               <button
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
                 class="p-1 border-0 bg-transparent rounded-circle"
-                id="add"
               >
                 <i class="ri-add-large-fill p-1 rounded-circle"></i>
               </button>
               <button
                 class="p-1 border-0 rounded-circle bg-danger text-primary"
+                id="delete-todo"
               >
                 <i class="ri-delete-bin-4-fill p-1 rounded-circle"></i>
               </button>

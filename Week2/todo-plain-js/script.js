@@ -1,7 +1,7 @@
-import { addTodo } from "./controller/todo.controller.js";
+import { addTodo, deleteTodo } from "./controller/todo.controller.js";
 import { updateDateOnPage } from "./dom/date.dom.js";
 import { updateQuoteOnPage } from "./dom/quote.dom.js";
-import { loadTodoOnPage, updateTodoOnpage } from "./dom/todo.dom.js";
+import { loadTodoOnPage } from "./dom/todo.dom.js";
 
 window.addEventListener("load", async () => {
   updateQuoteOnPage();
@@ -9,12 +9,12 @@ window.addEventListener("load", async () => {
   loadTodoOnPage();
 });
 
-document.getElementById("add").addEventListener("click", () => {
-  addTodo({
-    id: 2,
-    text: "Second Todo",
-    description: "Learn javascript in deep",
-    completed: false,
-  });
+document.getElementById("todo-add-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  addTodo(e);
 });
 
+document.getElementById("delete-todo").addEventListener("click", (e) => {
+  e.preventDefault();
+  deleteTodo(e);
+});

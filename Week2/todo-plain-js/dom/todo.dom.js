@@ -13,6 +13,7 @@ const createChildListElement = (todo) => {
     "align-items-center",
     "gap-3"
   );
+  li.id = `${todo.id}`;
   const input = document.createElement("input");
   input.type = "checkbox";
   input.classList.add("form-check-input", "bg-secondary", "p-3");
@@ -32,21 +33,21 @@ export const updateTodoOnpage = (todo) => {
 
 export const loadTodoOnPage = () => {
   const todolistHTML = document.getElementById("todo-list");
-  if (localStorage.getItem("todos") == null) {
-    const todo = {
-      id: 1,
-      text: "Default Todo",
-      description: "Learn javascript in deep",
-      completed: false,
-    };
-    localStorage.setItem("todos", JSON.stringify([todo]));
-    const li = createChildListElement(todo);
-    todolistHTML.appendChild(li);
+  const todos = getTodo();
+  if (todos == null) {
+    const msg = document.createElement("span");
+    msg.innerText = "No Todo Created";
+    msg.id = "no-todo";
+    todolistHTML.appendChild(msg);
     return;
   }
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  todos.forEach((todo) => {
+  todos?.forEach((todo) => {
     const li = createChildListElement(todo);
     todolistHTML.appendChild(li);
   });
+};
+
+export const clearTodoOnPage = () => {
+  const todolistHTML = document.getElementById("todo-list");
+  todolistHTML.innerHTML = "";
 };
