@@ -65,7 +65,9 @@ export const deleteTodo = () => {
     }
   });
 
-  const updatedTodos = todos.filter((todo) => !todo_id.includes(todo.id));
+  // const updatedTodos = todos.filter((todo) => !todo_id.includes(todo.id));
+  console.log(todo_id);
+  const updatedTodos = todos.filter(todo=> todo_id.indexOf(todo.id)!=-1);
   changeStorage(updatedTodos);
   clearTodoOnPage();
   loadTodoOnPage();
