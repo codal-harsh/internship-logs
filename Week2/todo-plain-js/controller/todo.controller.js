@@ -96,6 +96,21 @@ export const editTodo = (e) => {
   console.log(text.innerText.length);
   text.focus();
 
+  text.addEventListener("keydown", (e) => {
+    console.log(e.key);
+    if (e.key == "Enter") {
+      const todos = getTodo();
+      const todoToUpdate = todos.find((todo) => todo.id === li.id);
+      if (todoToUpdate) {
+        todoToUpdate.text = text.innerText;
+      }
+      text.contentEditable = "false";
+      changeStorage(todos);
+      clearTodoOnPage();
+      loadTodoOnPage();
+    }
+  });
+
   text.addEventListener("blur", (e) => {
     const todos = getTodo();
     const todoToUpdate = todos.find((todo) => todo.id === li.id);
