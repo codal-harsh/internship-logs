@@ -13,15 +13,18 @@ const generateID = (todos) => {
 };
 
 export const fetchTodoFromHTML = (e, todos) => {
-  const title = e.target.todo_title.value;
-  const description = e.target.todo_description.value;
+  const title = e.target.todo_title;
+  const description = e.target.todo_description;
+
   const genID = "todo" + generateID(todos);
   const todo = {
     id: genID,
-    text: title,
-    description,
+    text: title.value,
+    description: description.value,
     completed: false,
   };
+  title.value = "";
+  description.value = "";
   bootstrap.Modal.getInstance(document.getElementById("exampleModal")).hide();
   return todo;
 };
@@ -39,7 +42,6 @@ export const addTodo = (e) => {
   todos.push(todo);
   changeStorage(todos);
   updateTodoOnpage(todo);
-  document.getElementById("todo_title").value = "";
 };
 
 export const getTodo = () => {
@@ -65,9 +67,7 @@ export const deleteTodo = () => {
     }
   });
 
-  // const updatedTodos = todos.filter((todo) => !todo_id.includes(todo.id));
-  console.log(todo_id);
-  const updatedTodos = todos.filter(todo=> todo_id.indexOf(todo.id)!=-1);
+  const updatedTodos = todos.filter((todo) => !todo_id.includes(todo.id));
   changeStorage(updatedTodos);
   clearTodoOnPage();
   loadTodoOnPage();
@@ -79,6 +79,30 @@ export const deleteSingleTodo = (id) => {
   changeStorage(updatedTodos);
   clearTodoOnPage();
   loadTodoOnPage();
+};
+
+const toggleStrikeThrough = (listId, status) => {
+  if (status) {
+    document.getElementById(listId).querySelector("span").style.textDecoration =
+      "none";
+    return;
+  }
+  document.getElementById(listId).querySelector("span").style.textDecoration =
+    "line-through";
+};
+
+export const toggleComplete = (e) => {
+  const toggleBtn = e.target.closest(".todo-checkbox");
+  if (!toggleBtn) return;
+  const listId = toggleBtn.closest("li").id;
+  const todos = getTodo();
+
+  const indexToChange = todos.findIndex((todo) => todo.id === listId);
+  const status = todos.at(indexToChange).completed;
+  const temp = (todos.at(indexToChange).completed = !status);
+  toggleStrikeThrough(listId, status);
+  todos.with(indexToChange, temp);
+  changeStorage(todos);
 };
 
 export const editTodo = (e) => {

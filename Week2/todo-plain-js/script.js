@@ -3,6 +3,7 @@ import {
   deleteSingleTodo,
   deleteTodo,
   editTodo,
+  toggleComplete,
 } from "./controller/todo.controller.js";
 import { updateDateOnPage } from "./dom/date.dom.js";
 import { updateQuoteOnPage } from "./dom/quote.dom.js";
@@ -53,5 +54,10 @@ document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
 });
 
 todoListHTML.addEventListener("click", (e) => {
+
+});
+
+todoListHTML.addEventListener("click", (e) => {
   editTodo(e);
+  toggleComplete(e);
 });

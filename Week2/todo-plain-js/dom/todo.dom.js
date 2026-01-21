@@ -17,11 +17,15 @@ const createChildListElement = (todo) => {
   li.id = `${todo.id}`;
   const input = document.createElement("input");
   input.type = "checkbox";
-  input.classList.add("form-check-input", "bg-secondary", "p-3");
+  input.classList.add("form-check-input", "bg-secondary", "p-3", "todo-checkbox");
   li.appendChild(input);
   const text = document.createElement("span");
   text.classList.add("border-0");
   text.innerHTML = todo.text;
+  if(todo.completed){
+    text.classList.add("text-decoration-line-through");
+    input.checked = true;
+  }
   li.appendChild(text);
 
   const actions = document.createElement("div");
