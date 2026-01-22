@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { findNoteById } from "../utils/read.note.utils";
 import { useNavigate, useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import { updateSingleNote } from "../utils/update.note.utils";
+import { deleteNote } from "../utils/delete.note.utils";
 
 const Note = ({ notes, setNotes }) => {
   const params = useParams();
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [note, setNote] = useState({
     title: "",
     description: "",
@@ -33,8 +39,14 @@ const Note = ({ notes, setNotes }) => {
     e.preventDefault();
   };
 
+  const handleDelete = () => {    
+    deleteNote(params.id, setNotes);
+    navigate('/');
+    handleClose();
+  };
+
   return (
-    <div className="w-100 h-100 bg-primary ps-5">
+    <div className="w-100 h-100 bg-primary px-5">
       <Button
         variant="primary"
         onClick={() => navigate("/")}
@@ -95,6 +107,29 @@ const Note = ({ notes, setNotes }) => {
         >
           <i className={`ri-${editable ? "save-2" : "edit"}-fill fs-3`}></i>
         </Button>
+
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          className="rounded-circle border position-absolute bottom-0 start-0 bg-danger text-white m-4"
+        >
+          <i className={`ri-delete-bin-5-fill fs-3`}></i>
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Confirm Delete</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete this note?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Form>
     </div>
   );
