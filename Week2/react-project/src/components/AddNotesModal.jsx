@@ -16,6 +16,8 @@ const AddNotesModal = (props) => {
       favorite: false,
     };
     createNote(props.setNote, note);
+    setTitle("");
+    setDesc("");
     props.onHide();
   };
   return (
