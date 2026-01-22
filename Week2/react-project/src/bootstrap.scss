@@ -10,6 +10,11 @@ $theme-colors: (
   cursor: pointer;
 }
 
+.card-hover:hover{
+  transform: scale(1.01);
+  transition: all 200ms ease-in;
+}
+
 .three-line-truncate {
   display: -webkit-box;
   -webkit-line-clamp: 3;  

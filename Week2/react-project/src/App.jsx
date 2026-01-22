@@ -5,12 +5,7 @@ import FavButton from "./components/FavButton";
 import { useEffect, useState } from "react";
 import { readNotesFromStorage } from "./storage/localstorage.handler";
 
-const App = () => {
-  const [notes, setNote] = useState([]);
-
-  useEffect(() => {
-    setNote(readNotesFromStorage());
-  }, []);
+const App = ({notes, setNote}) => {
 
   return (
     <main className="w-100 min-vh-100 h-auto bg-primary position-relative">
@@ -19,7 +14,7 @@ const App = () => {
       </div>
 
       <div className="px-5 pt-5 w-100 z-1">
-        <NotesContainer notes={notes} />
+        <NotesContainer notes={notes} setNote={setNote} />
       </div>
 
       <div className="position-fixed end-0 bottom-0 d-flex flex-column m-3 gap-3">

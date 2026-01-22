@@ -15,7 +15,7 @@ const AddNotesModal = (props) => {
       date: dateToSave,
       favorite: false,
     };
-    createNote(props.notes, props.setNote, note);
+    createNote(props.setNote, note);
     props.onHide();
   };
   return (
