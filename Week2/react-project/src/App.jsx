@@ -2,8 +2,6 @@ import AppNavbar from "./components/Navbar";
 import NotesContainer from "./components/NotesContainer";
 import AddButton from "./components/AddButton";
 import FavButton from "./components/FavButton";
-import { useEffect, useState } from "react";
-import { readNotesFromStorage } from "./storage/localstorage.handler";
 
 const App = ({notes, setNote}) => {
 

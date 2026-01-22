@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import App from "./App";
-import Note from "./components/Note";
+import Note from "./Pages/Note";
 import { useEffect, useState } from "react";
 import { readNotesFromStorage } from "./storage/localstorage.handler";
 
 export function AppRoutes() {
   const [notes, setNotes] = useState([]);
-  
+
   useEffect(() => {
     setNotes(readNotesFromStorage());
   }, []);
