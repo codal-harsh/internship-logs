@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,14 +9,53 @@ import { useNavigate } from "react-router-dom";
 function AppNavbar({ notes }) {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-
+  const [activeIndex, setActiveIndex] = useState(-1);
   const filteredNotes = notes.filter(
     (note) =>
       note.title.toLowerCase().includes(search) ||
       note.description.toLowerCase().includes(search),
   );
 
-  console.log(filteredNotes);
+  useEffect(() => {
+    if (!search) return;
+
+    const handleKeyDown = (e) => {
+      if (!filteredNotes.length) return;
+
+      switch (e.key) {
+        case "ArrowDown":
+          e.preventDefault();
+          setActiveIndex((prev) =>
+            prev < filteredNotes.length - 1 ? prev + 1 : 0,
+          );
+          break;
+
+        case "ArrowUp":
+          e.preventDefault();
+          setActiveIndex((prev) =>
+            prev > 0 ? prev - 1 : filteredNotes.length - 1,
+          );
+          break;
+
+        case "Enter":
+          if (activeIndex >= 0) {
+            navigate(`/card/${filteredNotes[activeIndex].id}`);
+          }
+          break;
+
+        case "Escape":
+          setActiveIndex(-1);
+          // optionally close search here
+          break;
+
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [search, filteredNotes, activeIndex, navigate]);
 
   return (
     <>
@@ -53,9 +92,11 @@ function AppNavbar({ notes }) {
       {search && (
         <div className="d-flex bg-primary flex-column flex-wrap position-absolute end-0 px-5">
           {filteredNotes.length > 0 ? (
-            filteredNotes.map((note) => (
+            filteredNotes.map((note, index) => (
               <Card
-                className="cursor-p"
+                className={`cursor-p mb-2 ${
+                  index === activeIndex ? "border border-2 border-black" : ""
+                }`}
                 key={note.id}
                 onClick={() => {
                   navigate(`/card/${note.id}`);
