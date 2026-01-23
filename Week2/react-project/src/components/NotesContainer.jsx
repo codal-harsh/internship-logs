@@ -18,6 +18,7 @@ const NotesContainer = ({ notes, setNote }) => {
           </div>
         ))}
       </div>
+      
     </div>
   );
 };

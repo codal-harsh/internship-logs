@@ -5,8 +5,13 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
+import {
+  clearUser,
+  getUser,
+  readNotesFromStorage,
+} from "../storage/localstorage.handler";
 
-function AppNavbar({ notes }) {
+function AppNavbar({ notes, setNote }) {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -16,8 +21,19 @@ function AppNavbar({ notes }) {
       note.description.toLowerCase().includes(search),
   );
 
+  const logout = () => {
+    clearUser();
+    navigate("/");
+    return;
+  };
+
   useEffect(() => {
-    if (!search) return;
+    if (!search) {
+      setNote(readNotesFromStorage());
+      return;
+    }
+
+    setNote(filteredNotes);
 
     const handleKeyDown = (e) => {
       if (!filteredNotes.length) return;
@@ -55,14 +71,18 @@ function AppNavbar({ notes }) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [search, filteredNotes, activeIndex, navigate]);
+  }, [activeIndex, search]);
 
   return (
     <>
       <Navbar expand="lg" className="bg-primary">
         <Navbar.Brand className="fs-3" href="/">
-          React Notes
+          {getUser()?.email}
         </Navbar.Brand>
+        <Nav.Link href="/" onClick={logout}>
+          Logout
+        </Nav.Link>
+
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Form, Button, Modal } from "react-bootstrap";
 import { updateSingleNote } from "../utils/update.note.utils";
 import { deleteNote } from "../utils/delete.note.utils";
+import { toast } from "react-toastify";
 
 const Note = ({ notes, setNotes }) => {
   const params = useParams();
@@ -39,10 +40,11 @@ const Note = ({ notes, setNotes }) => {
     e.preventDefault();
   };
 
-  const handleDelete = () => {    
+  const handleDelete = () => {
     deleteNote(params.id, setNotes);
-    navigate('/');
+    toast("Note Deleted..");
     handleClose();
+    navigate("/");
   };
 
   return (
