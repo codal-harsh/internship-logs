@@ -1,0 +1,27 @@
+// Variable overrides FIRST
+$theme-colors: (
+  "primary": (#F5F5F0),
+  "info": rgb(99, 99, 248),
+  "danger": tomato,
+  "success" : black,
+);
+
+.cursor-p{
+  cursor: pointer;
+}
+
+.card-hover:hover{
+  transform: scale(1.01);
+  transition: all 200ms ease-in;
+}
+
+.three-line-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Then Bootstrap
+@import "bootstrap/scss/bootstrap";
