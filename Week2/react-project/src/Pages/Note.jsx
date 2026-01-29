@@ -5,6 +5,7 @@ import { Form, Button, Modal } from "react-bootstrap";
 import { updateSingleNote } from "../utils/update.note.utils";
 import { deleteNote } from "../utils/delete.note.utils";
 import { toast } from "react-toastify";
+import { checkLoggedIn } from "../storage/localstorage.handler";
 
 const Note = ({ notes, setNotes }) => {
   const params = useParams();
@@ -24,6 +25,11 @@ const Note = ({ notes, setNotes }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const isLoggedIn = checkLoggedIn();
+
+    if (!isLoggedIn) {
+      navigate("/");
+    }
     const foundNote = findNoteById(notes, params.id);
     if (foundNote) {
       setNote(foundNote);
