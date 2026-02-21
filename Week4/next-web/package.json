@@ -1,0 +1,26 @@
+{
+  "name": "next-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check",
+    "format": "biome format --write"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "next": "^16.1.6",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "@types/node": "^20.19.31",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19",
+    "typescript": "^5.9.3"
+  }
+}
