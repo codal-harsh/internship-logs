@@ -1,0 +1,7 @@
+{
+  "require": {
+    "phalcon/phalcon": "^6.0@dev"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
